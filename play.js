@@ -9,13 +9,18 @@ const connect = function() {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-  conn.on("connect", (data) => {
-    console.log(data);
-  });
-  return conn;
-};
 
-console.log("Connecting ...");
-connect();
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server");
+    conn.write("Name: SSH");
+  });
+
+  conn.on("data", (data) => {
+    console.log("Server says:", data);
+    // Process incoming data from the server as needed.
+  });
+
+  return conn; // Return the connection object
+};
 
 module.exports = { connect };
