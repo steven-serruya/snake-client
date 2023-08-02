@@ -1,13 +1,20 @@
-const { connect } = require("./play");
+const net = require("net");
 
-const connection = connect();
+// establishes a connection with the game server
+const connect = function() {
+  const conn = net.createConnection({
+    host: "165.227.47.243",
+    port: "50541",
+  });
 
-connection.setEncoding("utf8");
+  // interpret incoming data as text
+  conn.setEncoding("utf8");
+  conn.on("data", (data) => {
+    console.log(data);
+  });
+  return conn;
+};
 
-connection.on("connect", () => {
-  console.log("Connected to the server!");
-});
-
-connection.on("connect", () => {
-  console.log("Name: ___");
-});
+console.log("Connecting ...");
+connect();
+module.exports = {connect};
