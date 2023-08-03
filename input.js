@@ -30,6 +30,15 @@ const handleUserInput = function(data) {
     case 'd':
       connection.write("Move: right");
       break;
+    case '1':
+      connection.write("Say: Hi, I am Steven!"); // Player can press '1' to send this message
+      break;
+    case '2':
+      connection.write("Say: Watch out, here I come!"); // Player can press '2' to send this message
+      break;
+    case '3':
+      connection.write("I'm about to win this game!"); // Player can press '2' to send this message
+      break;
     default:
       break;
   }
