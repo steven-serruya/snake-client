@@ -14,10 +14,11 @@ const connect = function() {
   });
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
-  });
-  conn.on("connect", () => {
     console.log("Name: SSH");
+    conn.write("Move: up");
   });
+
+
   return conn;
 };
 
